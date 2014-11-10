@@ -1,0 +1,16 @@
+﻿@model MyAdmin.Mvc.Models.FileModel
+
+
+
+<form class="navbar-form navbar-right" role="search">
+
+    <div class="form-group">
+        <div class="input-group">
+            @Html.TextBoxFor(p => p.Arquivo, new { @class = "form-control", placeholder = "File Name", ng_model="query.NomeArquivo" })
+            <div class="input-group-addon">.CSV</div>
+        </div>
+    </div>
+
+    <button id="btnSalvarArquivo" type="submit" class="btn btn-default" ng-click="query.salvaArquivo()">Save</button>
+</form>
+

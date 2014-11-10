@@ -1,0 +1,256 @@
+﻿body
+{
+    padding-bottom: 30px;
+}
+
+/*#region Query */
+
+.img-query-loading
+{
+    margin: auto;
+    display: inherit;
+}
+
+.div-query-loading
+{
+    height: 0px;
+}
+
+.queryHint
+{
+    font-size: 0.8em;
+}
+
+.query-icon
+{
+    padding-top: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+    margin-left: .3em;
+}
+
+.query-theme-icon
+{
+    font-size: 1.105em;
+}
+
+.cursor-resize
+{
+    cursor: s-resize;
+}
+
+.codemirror-bottom-layer
+{
+    padding-bottom: 4px;
+    cursor: s-resize;
+}
+
+.CodeMirror
+{
+    cursor: auto;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px #ddd;
+}
+
+/*#endregion */
+
+#list-themes
+{
+    display: block;
+    position: relative;
+    border: none;
+    box-shadow: none;
+}
+
+.app-dropdown-list
+{
+    z-index: 500;
+    display: block;
+    position: relative;
+    border: none;
+    box-shadow: none;
+}
+
+.panel-info-db
+{
+    padding: 0px 15px;
+}
+
+.popover-content
+{
+    padding: 0px;
+}
+
+.panel-title.tabela
+{
+    font-size: 15px;
+}
+
+.coluna
+{
+    font-size: 0.9em;
+}
+
+.info-column
+{
+    color: #A2A2A2;
+}
+
+.signature
+{
+    margin-top: -22px;
+    color: #888;
+}
+
+.info-db-header
+{
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.header-inline
+{
+    display: inline-block;
+}
+
+.icon-json-panel
+{
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.separate-bottom
+{
+    margin-bottom: 10px;
+}
+
+/*#region Footer */
+
+.app-footer
+{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9999;
+}
+
+    .app-footer.limited-footer
+    {
+        max-height: 130px;
+    }
+
+    .app-footer .navbar-toggle
+    {
+        padding: 0px;
+        margin: 0px;
+        display: none;
+        position: relative;
+        float: right;
+        background-color: transparent;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+@media only screen and (max-width: 1024px)
+{
+    .app-footer
+    {
+        z-index: -1;
+        width: auto;
+        opacity: 0.6;
+        border: 0px;
+        background-color: transparent;
+    }
+}
+
+/*#endregion */
+
+/*#region Buttons */
+
+.btn-menu-icon-flat
+{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/*#endregion */
+
+/*#region Form */
+
+.form-group-6
+{
+    width: 50%;
+}
+
+    .form-group-6 .form-control
+    {
+        width: 100%;
+    }
+
+/*#endregion */
+
+/*#region Helpers */
+
+.text-white
+{
+    color: white;
+}
+
+/*#endregion */
+
+/*#region Animations */
+
+.sucessAnimation
+{
+    -moz-animation: sucess 5s;
+    -o-animation: sucess 5s;
+    -webkit-animation: sucess 5s;
+    animation: sucess 5s;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes sucess
+{
+    from
+    {
+        color: white;
+    }
+
+    to
+    {
+        color: green;
+    }
+}
+
+@-moz-keyframes sucess
+{
+    from
+    {
+        color: white;
+    }
+
+    to
+    {
+        color: green;
+    }
+}
+
+/* Standard syntax */
+@keyframes sucess
+{
+    from
+    {
+        color: white;
+    }
+
+    to
+    {
+        color: green;
+    }
+}
+
+
+/*#endregion */

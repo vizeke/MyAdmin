@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAdmin.Mvc", "MyAdmin.Mvc\MyAdmin.Mvc.csproj", "{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09DAA5CE-9138-45D7-B3FF-1DC930127A84}"
+	ProjectSection(SolutionItems) = preProject
+		WE-browsers.xml = WE-browsers.xml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

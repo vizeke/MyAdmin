@@ -1,0 +1,33 @@
+﻿@model MyAdmin.Mvc.Models.SistemasModel
+
+@{
+    var ambientes = Enum.GetValues(typeof(MyAdmin.Mvc.Models.SistemasModel.Ambiente));
+    var bancos = Enum.GetValues(typeof(MyAdmin.Mvc.Models.SistemasModel.TipoServidorBD));
+}
+
+<ul class="nav navbar-nav navbar-sistemas">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="navInfoSistema">{{query.sistema}}</span> <span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-sistema" role="menu">
+
+            <li ng-repeat="sistema in query.sistemas"><a href="#" ng-click="query.setSistema(sistema)">{{sistema}}</a></li>
+
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="navInfoAmbente">{{query.ambiente}}</span> <span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-ambiente" role="menu">
+            <li ng-repeat="ambiente in query.ambientes"><a href="#" ng-click="query.setAmbiente(ambiente)">{{ambiente}}</a></li>
+        </ul>
+    </li>
+
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="navInfoTipoBanco">{{query.banco}}</span> <span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-banco" role="menu">
+            @foreach (MyAdmin.Mvc.Models.SistemasModel.TipoServidorBD item in bancos)
+            {
+                <li><a href="#" ng-click="query.setBanco('@item')">@item.ToString()</a></li>
+            }
+        </ul>
+    </li>
+</ul>

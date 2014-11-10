@@ -1,0 +1,119 @@
+﻿@model MyAdmin.Mvc.Models.QueryModel
+
+@section navMenu
+{
+    <div class="navbar-form navbar-left">
+        <a class="btn btn-default pull-right btn-menu-icon-flat" ng-click="query.toggleInfoDB()">
+            <span ng-class="{ 'glyphicon-chevron-right': !query.infoDBVisible, 'glyphicon-chevron-left': query.infoDBVisible }" class="glyphicon"></span>
+        </a>
+
+    </div>
+
+    @Html.Action("Sistemas")
+
+    <form class="navbar-form navbar-left" role="search">
+        <button id="btnExecute" type="submit" class="btn btn-default btn-menu-icon-flat" ng-click="query.executaQuery()">Run <span class="fa fa-database"></span></button>
+    </form>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.Action("File")</li>
+        <li>
+            <div class="navbar-form navbar-right"><a class="btn btn-default pull-right" title="Configuration" href="/Configuration"><span class="fa fa-gear"></span></a></div>
+        </li>
+    </ul>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2" ng-show="query.infoDBVisible">
+            <label>Info DB</label>
+            <div class="panel-group" id="accordion-info-bd">
+                <div class="panel panel-default" ng-repeat="tabela in query.dbStructure.Tabelas">
+                    <div class="panel-heading info-db-header" data-toggle="collapse" data-parent="#accordion-info-bd" href="#collapse_{{$index}}">
+                        <h4 class="panel-title tabela">{{tabela.Nome}} 
+                        </h4>
+                    </div>
+                    <div id="collapse_{{$index}}" class="panel-collapse collapse">
+                        <div class="panel-body panel-info-db">
+                            <ul class="dropdown-menu app-dropdown-list">
+
+                                <li ng-repeat="coluna in tabela.Colunas" class="coluna">{{coluna.Nome}} <span class="info-column">({{coluna.Type}}({{coluna.Size}}) {{coluna.DescNullable}})</span></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-class="{ 'col-md-12': !query.infoDBVisible, 'col-md-10': query.infoDBVisible }" ng-controller="EditorController as editor">
+
+            <label>Query</label>
+
+            <span class="glyphicon glyphicon-floppy-disk query-icon pull-right" title="Save" ng-click="query.saveQueryFile()"></span>
+            <span class="fa fa-paint-brush query-icon query-theme-icon pull-right"></span>
+            <span class="fa fa-undo query-icon pull-right" title="Last Query" ng-click="query.getLastQuery()"></span>
+            <popover-themes ng-show="false"></popover-themes>
+            @using (Html.BeginForm("ExecutaQuery", "Home", FormMethod.Get, new { id = "form-query" }))
+            {
+                
+                @Html.TextAreaFor(m => m.Query, new { @class = "form-control", rows = "6" })
+                <div class="codemirror-bottom-layer">
+                </div>
+            }
+            <div class="div-query-loading">
+                <img class="text-center img-query-loading" alt="" src="/Content/Images/animated_loader.gif" ng-show="query.executing" />
+            </div>
+            <div class="Resultado" ng-bind-html="query.dados">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="panel-footer app-footer" ng-class="{ 'limited-footer' : query.limitedFooter }">
+            <label>Messages</label>
+            <button type="button" class="navbar-toggle" style="display: inline;" ng-click="query.toogleFooter()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar" style="background-color: #888;"></span>
+                <span class="icon-bar" style="background-color: #888;"></span>
+            </button>
+            <p ng-bind-html="query.resultado"></p>
+        </div>
+    </footer>
+</div>
+
+<script id="popover-tmpl-options" type="text/x-jquery-tmpl">
+    <ul id="list-themes" class="dropdown-menu">
+        <li role="presentation" ng-click="editor.themeClick('default')"><a class="theme-item" tabindex="-1" href="#">default</a></li>
+        @foreach (string item in Model.Temas)
+        { 
+            <li role="presentation" ng-click="editor.themeClick('@item')"><a class="theme-item" tabindex="-1" href="#">@item</a></li>
+        }
+    </ul>
+</script>
+
+@section scripts{
+    <!--https://github.com/eligrey/FileSaver.js-->
+    <script type="text/javascript" src="/Content/js/FileSaver.js"></script>
+    <script>
+        $('.codemirror-bottom-layer').mousedown(function (e) {
+            e.preventDefault();
+
+            //Salva os parametros necessários
+            var y = e.pageY;
+            var curHeight = $('.CodeMirror').height();
+
+            $('html').addClass('cursor-resize');
+            $('html').mousemove(function (ev) {
+                //Set o tamanho do codemirror de acordo com o tamanho original e a posição do mouse.
+                $('.CodeMirror').css("height", curHeight + ev.pageY - y);
+            });
+
+            $('html').mouseup(function (e) {
+                e.preventDefault();
+
+                $('html').removeClass('cursor-resize');
+                $('html').unbind('mousemove');
+            });
+        });
+    </script>
+}

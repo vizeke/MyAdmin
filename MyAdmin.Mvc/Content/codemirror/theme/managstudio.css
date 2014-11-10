@@ -1,0 +1,36 @@
+﻿/*
+
+    Name:       Management Studio
+    Author:     ViZeke (http://github.com/vizeke)
+
+*/
+
+.cm-s-managstudio.CodeMirror {background: #fff; color: #3a3432;}
+.cm-s-managstudio div.CodeMirror-selected {background: #d6d5d4 !important;}
+
+.cm-s-managstudio .CodeMirror-gutters {background: #f7f7f7; }
+.cm-s-managstudio .CodeMirror-guttermarker { color: #db2d20; }
+.cm-s-managstudio .CodeMirror-guttermarker-subtle { color: #807d7c; }
+.cm-s-managstudio .CodeMirror-linenumber {color: #807d7c;}
+
+.cm-s-managstudio .CodeMirror-cursor {border-left: 1px solid #5c5855 !important;}
+
+.cm-s-managstudio span.cm-comment {color: #009c25;}
+.cm-s-managstudio span.cm-atom {color: #a16a94;}
+.cm-s-managstudio span.cm-number {color: #000;}
+
+.cm-s-managstudio span.cm-property, .cm-s-managstudio span.cm-attribute {color: #01a252;}
+.cm-s-managstudio span.cm-keyword {color: #1c49de;}
+.cm-s-managstudio .cm-function {color: #F13CF8;}
+.cm-s-managstudio span.cm-string {color: #ff1200;}
+
+.cm-s-managstudio span.cm-variable {color: #01a252;}
+.cm-s-managstudio span.cm-variable-2 {color: #01a0e4;}
+.cm-s-managstudio span.cm-def {color: #e8bbd0;}
+.cm-s-managstudio span.cm-bracket {color: #3a3432;}
+.cm-s-managstudio span.cm-tag {color: #db2d20;}
+.cm-s-managstudio span.cm-link {color: #a16a94;}
+.cm-s-managstudio span.cm-error {background: #db2d20; color: #5c5855;}
+
+.cm-s-managstudio .CodeMirror-activeline-background {background: #e8f2ff !important;}
+.cm-s-managstudio .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

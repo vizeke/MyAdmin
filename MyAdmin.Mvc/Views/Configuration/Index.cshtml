@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Configuration";
+}
+
+@section navMenu
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <div class="navbar-form navbar-right"><a class="btn btn-default pull-right" title="Voltar" href="/Home"><span class="fa fa-reply"></span></a></div>
+        </li>
+    </ul>
+}
+
+<div class="container-fluid" ng-controller="ConfigurationController as config">
+    <h3>Shortcuts</h3>
+
+    <div role="form" class="form">
+        <div class="form-group">
+            <label for="">Ctrl + 1</label>
+            <input type="text" class="form-control" ng-model="config.ctrl1">
+        </div>
+        <div class="form-group">
+            <label for="">Ctrl + 2</label>
+            <input type="text" class="form-control" ng-model="config.ctrl2">
+        </div>
+        <div class="form-group">
+            <label for="">Ctrl + 3</label>
+            <input type="text" class="form-control" ng-model="config.ctrl3">
+        </div>
+        <button class="btn btn-default" ng-click="config.save()">Save</button>
+        <span class="fa fa-check text-white" ng-class="{ 'sucessAnimation': config.saveVisible }"></span>
+    </div>
+
+    <h3 class="header-inline">Connection Strings</h3>
+    <span class="fa fa-chevron-right icon-json-panel" ng-click="config.togleJsonPanel()"></span>
+    <div class="form-inline header-inline" role="form" ng-class="{'hidden' : !config.panelJsonVisible}">
+        <div class="form-group">
+            <label class="sr-only">Json Connections</label>
+            <input type="text" class="form-control" placeholder="json" ng-model="config.jsonConnections">
+        </div>
+        <button class="btn btn-default" ng-click="config.setJsonConnections()">Save Json</button>
+        <span class="fa fa-check text-white" ng-class="{ 'sucessAnimation': config.saveJsonVisible }"></span>
+    </div>
+    <div class="form-inline separate-bottom" role="form">
+        <div class="form-group">
+            <label class="sr-only">Sistema</label>
+            <input type="text" class="form-control" placeholder="Sistema" ng-model="config.connection.sistema">
+        </div>
+        <div class="form-group">
+            <label class="sr-only">Ambiente</label>
+            <select class="form-control" type="text" placeholder="Ambiente" ng-model="config.connection.ambiente" ng-options="opt.label for opt in config.ambientes"></select>
+        </div>
+        <div class="form-group form-group-6">
+            <label class="sr-only">Connection String</label>
+            <input type="text" class="form-control" placeholder="Connection String" ng-model="config.connection.connString">
+        </div>
+        <button class="btn btn-default" ng-click="config.addConnectionString()">add</button>
+        <button class="btn btn-default" ng-click="config.getJsonConnections()">Get Json</button>
+    </div>
+
+    <table class="table table-striped" ng-class="{ 'hidden': config.connections.length == 0}">
+        <thead>
+            <tr>
+                <td><strong>Sistema</strong></td>
+                <td><strong>Ambiente</strong></td>
+                <td><strong>Conexão</strong></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="conn in config.connections track by $index">
+                <td>{{conn.sistema}}</td>
+                <td>{{conn.ambiente.label}}</td>
+                <td>{{conn.connString}}</td>
+                <td>
+                    <button ng-click="config.deleteConnectionString(conn)"><span class="fa fa-trash"></span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="alert alert-info">
+        Todas as informações são armazenadas localmente. portanto, são de sua responsabilidade.
+    </p>
+</div>
+
+@section scripts
+{
+
+}
