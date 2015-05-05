@@ -1,2 +1,2 @@
-MyAdmin
-=======
+MyAdmin.Mvc
+===========
