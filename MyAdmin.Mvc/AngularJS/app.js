@@ -318,10 +318,9 @@
 
                     if ((typeof value == 'string') && value.indexOf('/Date(') == 0) {
                         var re = /-?\d+/;
-
                         var m = re.exec(value);
 
-                        value = new Date(parseInt(m[0])).toLocaleDateString();
+                        value = new Date(parseInt(m[0])).toLocaleString();
                     }
 
                     htmlBody += '<td>' + value + '</td>';
