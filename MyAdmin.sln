@@ -1,12 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAdmin.Mvc", "MyAdmin.Mvc\MyAdmin.Mvc.csproj", "{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}"
-EndProject
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09DAA5CE-9138-45D7-B3FF-1DC930127A84}"
 	ProjectSection(SolutionItems) = preProject
 		WE-browsers.xml = WE-browsers.xml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAdmin.Mvc", "MyAdmin.Mvc\MyAdmin.Mvc.csproj", "{F0E4C7EC-4ABE-4CCB-B6CA-7814D55276FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

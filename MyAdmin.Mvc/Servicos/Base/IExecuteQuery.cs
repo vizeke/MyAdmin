@@ -5,8 +5,10 @@ using System.Web;
 
 namespace MyAdmin.Mvc.Servicos.Base
 {
-    public interface IAuthenticationService
+    public interface IExecuteQuery
     {
-        bool Login(string username, string password);
+        object ExecuteQuery(string pQuery);
+
+        object GetDBStructure();
     }
 }

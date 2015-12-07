@@ -21,6 +21,13 @@
     <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -142,6 +149,7 @@
     <Compile Include="Models\LogIndexModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Servicos\Base\IAuthenticationService.cs" />
+    <Compile Include="Servicos\Base\IExecuteQuery.cs" />
     <Compile Include="Servicos\ExecuteOracle.cs" />
     <Compile Include="Servicos\ExecuteSqlServer.cs" />
     <Compile Include="Servicos\QueryManager.cs" />

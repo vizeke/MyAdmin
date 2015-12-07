@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace MyAdmin.Mvc.Servicos
 {
-    public class ExecuteSqlServer : ExecuteQueryBase
+    public class ExecuteSqlServer : ExecuteQueryBase, IExecuteQuery
     {
         private string _strResult;
         private int _fileCount = 0;
@@ -109,7 +109,7 @@ namespace MyAdmin.Mvc.Servicos
             return fileName;
         }
 
-        public object SqlSerialize(SqlDataReader reader)
+        private object SqlSerialize(SqlDataReader reader)
         {
             var datatable = new List<Dictionary<string, object>>();
             var cols = new List<string>();

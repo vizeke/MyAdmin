@@ -5,7 +5,7 @@ using MyAdmin.Mvc.Servicos.Base;
 
 namespace MyAdmin.Mvc.Servicos
 {
-    public class ExecuteOracle : ExecuteQueryBase
+    public class ExecuteOracle : ExecuteQueryBase, IExecuteQuery
     {
         public ExecuteOracle(string connString, bool saveFile = false, string fileName = "", string appPath = "")
             : base(connString, saveFile, fileName, appPath)
