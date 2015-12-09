@@ -5,6 +5,7 @@ using MyAdmin.Mvc.Servicos.Base;
 
 namespace MyAdmin.Mvc.Servicos
 {
+    
     public class ExecuteOracle : ExecuteQueryBase, IExecuteQuery
     {
         public ExecuteOracle(string connString, bool saveFile = false, string fileName = "", string appPath = "")
@@ -12,7 +13,11 @@ namespace MyAdmin.Mvc.Servicos
         {
 
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pQuery"></param>
         public override object ExecuteQuery(string pQuery)
         {
             using (OracleConnection objConn = new OracleConnection(this.ConnectionString))
