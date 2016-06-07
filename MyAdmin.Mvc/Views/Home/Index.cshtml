@@ -30,7 +30,7 @@
             <div class="panel-group" id="accordion-info-bd">
                 <div class="panel panel-default" ng-repeat="tabela in query.dbStructure.Tabelas">
                     <div class="panel-heading info-db-header" data-toggle="collapse" data-parent="#accordion-info-bd" href="#collapse_{{$index}}">
-                        <h4 class="panel-title tabela">{{tabela.Nome}} 
+                        <h4 class="panel-title tabela">{{tabela.Schema}}.{{tabela.Nome}} 
                         </h4>
                     </div>
                     <div id="collapse_{{$index}}" class="panel-collapse collapse">

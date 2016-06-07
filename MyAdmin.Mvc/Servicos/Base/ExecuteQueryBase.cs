@@ -156,6 +156,7 @@ namespace MyAdmin.Mvc.Servicos.Base
 
             public class Tabela
             {
+                public string Schema { get; set; }
                 public string Nome { get; set; }
                 public List<Coluna> Colunas { get; set; }
             }

@@ -160,12 +160,13 @@ namespace MyAdmin.Mvc.Servicos
         {
             InfoDataBase dataResult = new InfoDataBase();
 
-            string structSQL = @"select so.name as tableName, sc.name as columnName, st.name as type, sc.max_length as size, sc.is_nullable
+            string structSQL = @"select sch.name as schemaName, so.name as tableName, sc.name as columnName, st.name as type, sc.max_length as size, sc.is_nullable
                                  from sys.objects so
                                  inner join sys.columns sc on sc.object_id = so.object_id
                                  inner join sys.types st on st.system_type_id = sc.system_type_id
+                                 inner join sys.schemas sch on sch.schema_id = so.schema_id
                                  where so.type = 'U' 
-                                 order by so.name";
+                                 order by sch.name, so.name";
 
             using (SqlConnection conn = new SqlConnection(this.ConnectionString))
             {
@@ -179,6 +180,7 @@ namespace MyAdmin.Mvc.Servicos
                         string table = "";
                         while (dsResult.Read())
                         {
+                            string currentSchema = dsResult["schemaName"].ToString();
                             string currentTable = dsResult["tableName"].ToString();
                             string currentColumn = dsResult["columnName"].ToString();
                             string currentType = dsResult["type"].ToString();
@@ -187,7 +189,11 @@ namespace MyAdmin.Mvc.Servicos
 
                             if (table != currentTable)
                             {
-                                dataResult.Tabelas.Add(new InfoDataBase.Tabela() { Nome = currentTable, Colunas = new List<InfoDataBase.Coluna>() });
+                                dataResult.Tabelas.Add(new InfoDataBase.Tabela() {
+                                    Schema = currentSchema,
+                                    Nome = currentTable,
+                                    Colunas = new List<InfoDataBase.Coluna>()
+                                });
                             }
 
                             dataResult.Tabelas[dataResult.Tabelas.Count - 1].Colunas
