@@ -436,7 +436,9 @@
                   for (var i = 0; i < data.data.Tabelas.length; i++) {
                       cmHintOptions.tables[data.data.Tabelas[i].Nome] = getColumnsArray(data.data.Tabelas[i].Colunas);
                   }
-                  CodeMirror.options.hintOptions = cmHintOptions;
+                  if (CodeMirror) {
+                      CodeMirror.options.hintOptions = cmHintOptions;
+                  }
 
               }).error(function (data, status, headers, config) {
                   _this.resultado = data.msg ? data.msg : "Problema buscando metadados do banco";
@@ -593,7 +595,21 @@
         }
 
         _this.getJsonConnections = function () {
-            alert(JSON.stringify(_this.connections));
+            return JSON.stringify(_this.connections, null, '\t');
+        }
+
+        _this.showModalConnections = function () {
+            $('#modal-connections').modal('show');
+        }
+
+        _this.copyToclipboard = function (idTextArea) {
+            $('#' + idTextArea).select();
+            
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                window.prompt("Copy to clipboard: Ctrl+C, Enter", _this.connections);
+            }
         }
 
         _this.setJsonConnections = function () {

@@ -55,7 +55,7 @@
             <input type="text" class="form-control" placeholder="Connection String" ng-model="config.connection.connString">
         </div>
         <button class="btn btn-default" ng-click="config.addConnectionString()">add</button>
-        <button class="btn btn-default" ng-click="config.getJsonConnections()">Get Json</button>
+        <button class="btn btn-default" ng-click="config.showModalConnections()">Get Json</button>
     </div>
 
     <table class="table table-striped" ng-class="{ 'hidden': config.connections.length == 0}">
@@ -81,6 +81,24 @@
     <p class="alert alert-info">
         Todas as informações são armazenadas localmente. portanto, são de sua responsabilidade.
     </p>
+
+    <div id="modal-connections" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Connection Strings</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea rows="10" id="txtConnectionStrings" class="form-control">{{config.getJsonConnections()}}</textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="config.copyToclipboard('txtConnectionStrings')" >Ctrl + C</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>
 
 @section scripts
