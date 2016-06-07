@@ -321,6 +321,8 @@
                         var m = re.exec(value);
 
                         value = new Date(parseInt(m[0])).toLocaleString();
+                    } else if (typeof value == 'string') {
+                        value = value.replace(/ /g, '&nbsp;');
                     }
 
                     htmlBody += '<td>' + value + '</td>';
