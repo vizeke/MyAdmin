@@ -322,7 +322,7 @@
 
                         value = new Date(parseInt(m[0])).toLocaleString();
                     } else if (typeof value == 'string') {
-                        value = value.replace(/ /g, '&nbsp;');
+                        value = value.replace(/\s/g, '&nbsp;');
                     }
 
                     htmlBody += '<td>' + value + '</td>';
