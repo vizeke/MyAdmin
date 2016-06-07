@@ -9,6 +9,7 @@
 
 # Visual Studio
 .vs/
+.vs/config/applicationhost.config
 
 # Build results
 [Dd]ebug/
