@@ -178,6 +178,9 @@ namespace MyAdmin.Mvc.Servicos
                     using (SqlDataReader dsResult = comm.ExecuteReader())
                     {
                         string table = "";
+                        string schema = "";
+                        int idxTables = -1;
+                        int idxSchemas = -1;
                         while (dsResult.Read())
                         {
                             string currentSchema = dsResult["schemaName"].ToString();
@@ -187,16 +190,27 @@ namespace MyAdmin.Mvc.Servicos
                             int currentSize = Convert.ToInt32(dsResult["size"]);
                             bool currentNullable = Convert.ToBoolean(dsResult["is_nullable"]);
 
+                            if (schema != currentSchema)
+                            {
+                                dataResult.Schemas.Add(new InfoDataBase.Schema() {
+                                    Name = currentSchema,
+                                    Tabelas = new List<InfoDataBase.Tabela>()
+                                });
+                                idxSchemas++;
+                                idxTables = -1;
+                            }
+
                             if (table != currentTable)
                             {
-                                dataResult.Tabelas.Add(new InfoDataBase.Tabela() {
+                                dataResult.Schemas[idxSchemas].Tabelas.Add(new InfoDataBase.Tabela() {
                                     Schema = currentSchema,
                                     Nome = currentTable,
                                     Colunas = new List<InfoDataBase.Coluna>()
                                 });
+                                idxTables++;
                             }
 
-                            dataResult.Tabelas[dataResult.Tabelas.Count - 1].Colunas
+                            dataResult.Schemas[idxSchemas].Tabelas[idxTables].Colunas
                                 .Add(new InfoDataBase.Coluna()
                                 {
                                     Nome = currentColumn,
@@ -206,6 +220,7 @@ namespace MyAdmin.Mvc.Servicos
                                 });
 
                             table = currentTable;
+                            schema = currentSchema;
                         }
                     }
                 }

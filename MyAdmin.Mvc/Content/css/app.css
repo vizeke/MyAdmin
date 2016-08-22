@@ -72,6 +72,10 @@
     box-shadow: none;
 }
 
+.schema-title {
+    margin-left: 10px;
+}
+
 .panel-info-db
 {
     padding: 0px 15px;

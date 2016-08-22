@@ -28,18 +28,20 @@
         <div class="col-md-2" ng-show="query.infoDBVisible">
             <label>Info DB</label>
             <div class="panel-group" id="accordion-info-bd">
-                <div class="panel panel-default" ng-repeat="tabela in query.dbStructure.Tabelas">
-                    <div class="panel-heading info-db-header" data-toggle="collapse" data-parent="#accordion-info-bd" href="#collapse_{{$index}}">
-                        <h4 class="panel-title tabela">{{tabela.Schema}}.{{tabela.Nome}} 
-                        </h4>
-                    </div>
-                    <div id="collapse_{{$index}}" class="panel-collapse collapse">
-                        <div class="panel-body panel-info-db">
-                            <ul class="dropdown-menu app-dropdown-list">
-
-                                <li ng-repeat="coluna in tabela.Colunas" class="coluna">{{coluna.Nome}} <span class="info-column">({{coluna.Type}}({{coluna.Size}}) {{coluna.DescNullable}})</span></li>
-
-                            </ul>
+                <div ng-repeat="schema in query.dbStructure.Schemas">
+                    <h4 class="schema-title">{{schema.Name}}</h4>
+                    <div class="panel panel-default" ng-repeat="tabela in schema.Tabelas">
+                        <div class="panel-heading info-db-header" data-toggle="collapse" data-parent="#accordion-info-bd" href="#collapse_{{$index}}">
+                            <h4 class="panel-title tabela">
+                                {{tabela.Nome}}
+                            </h4>
+                        </div>
+                        <div id="collapse_{{$index}}" class="panel-collapse collapse">
+                            <div class="panel-body panel-info-db">
+                                <ul class="dropdown-menu app-dropdown-list">
+                                    <li ng-repeat="coluna in tabela.Colunas" class="coluna">{{coluna.Nome}} <span class="info-column">({{coluna.Type}}({{coluna.Size}}) {{coluna.DescNullable}})</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

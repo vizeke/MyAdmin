@@ -149,10 +149,16 @@ namespace MyAdmin.Mvc.Servicos.Base
         {
             public InfoDataBase()
             {
-                Tabelas = new List<Tabela>();
+                Schemas = new List<Schema>();
             }
 
-            public List<Tabela> Tabelas { get; set; }
+            public List<Schema> Schemas { get; set; }
+
+            public class Schema
+            {
+                public string Name { get; set; }
+                public List<Tabela> Tabelas { get; set; }
+            }
 
             public class Tabela
             {
