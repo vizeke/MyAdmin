@@ -124,7 +124,10 @@ namespace MyAdmin.Mvc.Controllers
 
                 var data = serv.ExecuteQuery(Query, NomeArquivo, SalvaArquivo);
 
-                return Json(data, JsonRequestBehavior.AllowGet);
+                JsonResult jresult = Json(data, JsonRequestBehavior.AllowGet);
+                jresult.MaxJsonLength = int.MaxValue;
+
+                return jresult;
             }
             catch (Exception ex)
             {
@@ -162,7 +165,9 @@ namespace MyAdmin.Mvc.Controllers
 
                 var data = serv.GetStructureDB();
 
-                return Json(data, JsonRequestBehavior.AllowGet);
+                JsonResult jresult = Json(data, JsonRequestBehavior.AllowGet);
+                jresult.MaxJsonLength = int.MaxValue;
+                return jresult;
             }
             catch (Exception ex)
             {
