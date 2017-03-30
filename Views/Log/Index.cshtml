@@ -1,0 +1,20 @@
+﻿@model MyAdmin.Mvc.Models.LogIndexModel
+
+@section navMenu
+{
+
+}
+
+<h2>Log</h2>
+
+<ul>
+    @foreach (FileInfo file in Model.Files)
+    { 
+        <li>@file.Name</li>
+        <p>@Html.Raw(file.OpenText().ReadToEnd().Replace("\n", "<br/>"))</p>
+    }
+</ul>
+
+@section scripts{
+
+}

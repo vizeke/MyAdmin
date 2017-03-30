@@ -1,0 +1,40 @@
+﻿@model MyAdmin.Application.Models.AuthenticationModel
+
+@{
+    var linkForgotPass = "http://autenticacao.dcpr.es.gov.br/WebForm/frmNovaSenha.aspx";
+    
+    ViewBag.Title = "Login";
+}
+
+@section navMenu{
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a class="pull-right" title="Voltar" href="@linkForgotPass">Forgot my password</a>
+        </li>
+    </ul>
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+            <h2>Login</h2>
+            @using (Html.BeginForm("Authenticate", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Username" })
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                </div>
+                <div class="checkbox text-right">
+                    <label>
+                        @Html.CheckBoxFor(m => m.RememberMe) Remember Me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-default pull-right">Sign In</button>
+            }
+        </div>
+    </div>
+</div>

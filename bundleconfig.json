@@ -1,0 +1,61 @@
+﻿// Configure bundling and minification for the project.
+// More info at https://go.microsoft.com/fwlink/?LinkId=808241
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    // An array of relative input file paths. Globbing patterns supported
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/css/codemirror.themes.css",
+    // An array of relative input file paths. Globbing patterns supported
+    "inputFiles": [
+      "wwwroot/codemirror/theme/3024-day.css",
+      "wwwroot/codemirror/theme/3024-night.css",
+      "wwwroot/codemirror/theme/ambiance-mobile.css",
+      "wwwroot/codemirror/theme/ambiance.css",
+      "wwwroot/codemirror/theme/base16-dark.css",
+      "wwwroot/codemirror/theme/base16-light.css",
+      "wwwroot/codemirror/theme/blackboard.css",
+      "wwwroot/codemirror/theme/cobalt.css",
+      "wwwroot/codemirror/theme/eclipse.css",
+      "wwwroot/codemirror/theme/elegant.css",
+      "wwwroot/codemirror/theme/erlang-dark.css",
+      "wwwroot/codemirror/theme/lesser-dark.css",
+      "wwwroot/codemirror/theme/managstudio.css",
+      "wwwroot/codemirror/theme/mbo.css",
+      "wwwroot/codemirror/theme/mdn-like.css",
+      "wwwroot/codemirror/theme/midnight.css",
+      "wwwroot/codemirror/theme/monokai.css",
+      "wwwroot/codemirror/theme/neat.css",
+      "wwwroot/codemirror/theme/neo.css",
+      "wwwroot/codemirror/theme/night.css",
+      "wwwroot/codemirror/theme/paraiso-dark.css",
+      "wwwroot/codemirror/theme/paraiso-light.css",
+      "wwwroot/codemirror/theme/pastel-on-dark.css",
+      "wwwroot/codemirror/theme/rubyblue.css",
+      "wwwroot/codemirror/theme/solarized.css",
+      "wwwroot/codemirror/theme/the-matrix.css",
+      "wwwroot/codemirror/theme/tomorrow-night-eighties.css",
+      "wwwroot/codemirror/theme/twilight.css",
+      "wwwroot/codemirror/theme/vibrant-ink.css",
+      "wwwroot/codemirror/theme/xq-dark.css",
+      "wwwroot/codemirror/theme/xq-light.css"
+    ]
+  }
+]
