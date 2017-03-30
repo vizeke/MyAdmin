@@ -13,7 +13,9 @@ namespace MyAdmin.Mvc.Infrastructure
         {
             var typeOfProperty = modelExpression.ReturnType;
             if (typeOfProperty.GetTypeInfo().IsEnum)
+            {
                 throw new ArgumentException(string.Format("Type {0} is not an enum", typeOfProperty));
+            }
             var enumValues = new SelectList(Enum.GetValues(typeOfProperty));
             return htmlHelper.DropDownListFor(modelExpression, enumValues, firstElement) as HtmlString;
         }

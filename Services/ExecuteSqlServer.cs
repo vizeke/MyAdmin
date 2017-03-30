@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace MyAdmin.Application.Services
 {
-    public class ExecuteSqlServer : ExecuteQueryBase
+    public class ExecuteSqlServer : ExecuteQueryBase, IExecuteQuery
     {
         private string _strResult;
         private int _fileCount = 0;
@@ -95,7 +95,7 @@ namespace MyAdmin.Application.Services
                     {
                         do
                         {
-                            if (_saveFile)
+                            if (saveFile)
                             {
                                 dataTables.Add(SqlExportFile(dr));
                             }
@@ -118,8 +118,8 @@ namespace MyAdmin.Application.Services
         private string SqlExportFile(SqlDataReader dr)
         {
             Exportador export = new Exportador();
-            string fileName = "App_Data\\tmp\\" + _fileName + "_" + _fileCount + ".csv";
-            string fullFileName = _appPath + fileName;
+            string fileName = "App_Data\\tmp\\" + base.fileName + "_" + _fileCount + ".csv";
+            string fullFileName = appPath + fileName;
             export.exportToCSVfile(fullFileName, dr);
 
             _strResult += "Arquivo " + fileName + " gerado com sucesso. <br/>";

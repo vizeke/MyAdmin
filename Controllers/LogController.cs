@@ -7,17 +7,17 @@ namespace MyAdmin.Mvc.Controllers
 {
     public class LogController : Controller
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IHostingEnvironment hostingEnvironment;
 
         public LogController(IHostingEnvironment hostingEnvironment)
         {
-            _hostingEnvironment = hostingEnvironment;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            DirectoryInfo dir = new DirectoryInfo(_hostingEnvironment.WebRootPath + "App_Data\\log\\");
+            DirectoryInfo dir = new DirectoryInfo(hostingEnvironment.WebRootPath + "App_Data\\log\\");
 
             var model = new LogIndexModel()
             {

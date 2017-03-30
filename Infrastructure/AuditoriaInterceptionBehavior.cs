@@ -6,7 +6,7 @@ using MyAdmin.Application.Models;
 using MyAdmin.Application.Services.Base;
 using Newtonsoft.Json;
 */
-namespace MyAdmin.Application.Infra
+namespace MyAdmin.Application.Infrastructure
 {
     //IInterceptionBehavior
     public class AuditoriaInterceptionBehavior 

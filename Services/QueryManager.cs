@@ -1,51 +1,34 @@
-﻿using MyAdmin.Application.Models;
+﻿using System;
 using MyAdmin.Application.Services.Base;
 
 namespace MyAdmin.Application.Services
 {
-    public class QueryManager : IQueryManager
+    public class QueryManager
     {
         // private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public object ExecuteQuery(string tipoDB, string connString, string appPath, string query, string fileName = "", bool saveFile = false)
+        public object ExecuteQuery(string typeDB, string connString, string query, bool saveFile = false, string fileName = "", string appPath = "")
         {
-            if (tipoDB == SistemasModel.TipoServidorBD.SqlServer.ToString())
-            {
-                ExecuteSqlServer client = new ExecuteSqlServer(connString, saveFile, fileName, appPath);
-                return client.ExecuteQuery(query);
-            }
-            else if (tipoDB == SistemasModel.TipoServidorBD.Oracle.ToString())
-            {
-                ExecuteOracle client = new ExecuteOracle(connString, saveFile, fileName, appPath);
-                return client.ExecuteQuery(query);
-            }
-            else
-            {
-                return new
-                {
-                    msg = "Database not supported"
-                };
-            }
+            IExecuteQuery client = this.GetDBClient(typeDB, connString, fileName, saveFile, appPath);
+            return client.ExecuteQuery(query);
         }
 
-        public object GetStructureDB(string tipoDB, string connString, string appPath)
+        public object GetDBStructure(string typeDB, string connString)
         {
-            if (tipoDB == SistemasModel.TipoServidorBD.SqlServer.ToString())
+            IExecuteQuery client = this.GetDBClient(typeDB, connString);
+            return client.GetDBStructure();
+        }
+
+        private IExecuteQuery GetDBClient(string typeDB, string connString, string fileName = "", bool saveFile = false, string appPath = "")
+        {
+            switch (typeDB)
             {
-                ExecuteSqlServer client = new ExecuteSqlServer(connString);
-                return client.GetDBStructure();
-            }
-            else if (tipoDB == SistemasModel.TipoServidorBD.Oracle.ToString())
-            {
-                ExecuteOracle client = new ExecuteOracle(connString);
-                return client.GetDBStructure();
-            }
-            else
-            {
-                return new
-                {
-                    msg = "Database not supported"
-                };
+                case "SqlServer":
+                    return new ExecuteSqlServer(connString, saveFile, fileName, appPath);
+                case "Oracle":
+                    return new ExecuteOracle(connString, saveFile, fileName, appPath);
+                default:
+                    throw new Exception("Database not supported");
             }
         }
     }

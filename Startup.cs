@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MyAdmin.Application.Services;
-using MyAdmin.Application.Services.Base;
 
 namespace MyAdmin
 {
@@ -25,8 +23,9 @@ namespace MyAdmin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IQueryManager, QueryManager>();
             services.AddSingleton(provider => Configuration);
+
+            services.AddMvc( config => config.Filters.Add(new CustomExceptionFilter()));
 
             // Add framework services.
             services.AddMvc();

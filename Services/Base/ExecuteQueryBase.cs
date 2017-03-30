@@ -7,22 +7,22 @@ namespace MyAdmin.Application.Services.Base
     {
         // private readonly Common.Logging.ILog log = Common.Logging.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected string _fileName;
-        protected string _appPath;
-        protected bool _saveFile;
-        protected string _connString;
+        protected string fileName;
+        protected string appPath;
+        protected bool saveFile;
+        protected string connString;
 
         public ExecuteQueryBase(string connString, bool saveFile = false, string fileName = "", string appPath = "")
         {
-            _fileName = fileName;
-            _appPath = appPath;
-            _saveFile = saveFile;
-            _connString = connString;
+            this.fileName = fileName;
+            this.appPath = appPath;
+            this.saveFile = saveFile;
+            this.connString = connString;
         }
 
         protected string ConnectionString
         {
-            get { return _connString; }
+            get { return connString; }
         }
 
         public abstract object ExecuteQuery(string pQuery);
@@ -119,30 +119,6 @@ namespace MyAdmin.Application.Services.Base
 
             return listOperacoes;
         }
-
-        /*public IEnumerable<Dictionary<string, object>> SerializeDataTable(DataTable dt)
-        {
-            var results = new List<Dictionary<string, object>>();
-            var cols = new List<string>();
-            foreach (DataColumn col in dt.Columns)
-                cols.Add(col.ColumnName);
-
-            foreach (DataRow row in dt.Rows)
-            {
-                results.Add(SerializeRow(cols, row));
-            }
-            return results;
-        }*/
-
-        /*private Dictionary<string, object> SerializeRow(IEnumerable<string> cols, DataRow row)
-        {
-            var result = new Dictionary<string, object>();
-            foreach (var col in cols)
-            {
-                result.Add(col, row[col]);
-            }
-            return result;
-        }*/
 
         protected class InfoDataBase
         {

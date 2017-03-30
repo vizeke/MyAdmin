@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using MyAdmin.Application.Models;
-using MyAdmin.Application.Services.Base;
+using MyAdmin.Application.Services;
 
 namespace MyAdmin.Mvc.Controllers
 {
@@ -15,10 +15,10 @@ namespace MyAdmin.Mvc.Controllers
     {
         private readonly IHostingEnvironment hostingEnvironment;
         private IConfigurationRoot configuration { get; set; }
-        public readonly IQueryManager queryManager;
-        public QueryController(IQueryManager _queryManager, IHostingEnvironment hostingEnvironment, IConfigurationRoot configuration)
+        public readonly QueryManager queryManager;
+        public QueryController(IHostingEnvironment hostingEnvironment, IConfigurationRoot configuration)
         {
-            queryManager = _queryManager;
+            this.queryManager = new QueryManager();
             this.hostingEnvironment = hostingEnvironment;
         }
 
@@ -32,38 +32,23 @@ namespace MyAdmin.Mvc.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult ExecutaQuery([FromBody]QueryExecutaQueryDTO dto)
-        {
-            try
-            {
-                var data = queryManager.ExecuteQuery(dto.Banco, dto.ConnectionString, hostingEnvironment.WebRootPath, dto.Query, dto.NomeArquivo, dto.SalvaArquivo ?? false);
-
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { msg = ex.Message });
-            }
-        }
-
         public IActionResult SalvarArquivo()
         {
             return View();
         }
 
         [HttpPost]
+        public IActionResult ExecutaQuery([FromBody]QueryExecutaQueryDTO dto)
+        {
+            var data = queryManager.ExecuteQuery(dto.Banco, dto.ConnectionString, dto.Query, dto.SalvaArquivo ?? false, dto.NomeArquivo, hostingEnvironment.WebRootPath);
+            return Ok(data);
+        }
+
+        [HttpPost]
         public IActionResult GetStructureDB([FromBody]QueryStructureDBDTO dto)
         {
-            try
-            {
-                var data = queryManager.GetStructureDB(dto.Banco, dto.ConnectionString, hostingEnvironment.WebRootPath);
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { msg = ex.Message });
-            }
+            var data = queryManager.GetDBStructure(dto.Banco, dto.ConnectionString);
+            return Ok(data);
         }
 
         /* Private methods */

@@ -2,7 +2,7 @@
 
 namespace MyAdmin.Application.Services
 {
-    public class ExecuteOracle : ExecuteQueryBase
+    public class ExecuteOracle : ExecuteQueryBase, IExecuteQuery
     {
         public ExecuteOracle(string connString, bool saveFile = false, string fileName = "", string appPath = "")
             : base(connString, saveFile, fileName, appPath)

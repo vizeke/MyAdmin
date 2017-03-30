@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using MyAdmin.Application.Services.Base;*/
 
-namespace MyAdmin.Application.Infra
+namespace MyAdmin.Application.Infrastructure
 {
     // ClaimsAuthenticationManager
     public class CustomClaimsTransformer 
