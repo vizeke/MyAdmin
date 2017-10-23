@@ -29,14 +29,16 @@
             <label>Info DB</label>
             <div class="panel-group" id="accordion-info-bd">
                 <div ng-repeat="schema in query.dbStructure.Schemas">
-                    <h4 class="schema-title">{{schema.Name}}</h4>
-                    <div class="panel panel-default" ng-repeat="tabela in schema.Tabelas">
-                        <div class="panel-heading info-db-header" data-toggle="collapse" data-parent="#accordion-info-bd" href="#collapse_{{$index}}">
+                    <div data-toggle="collapse" data-parent="#accordion-info-bd" href="#collapse_s_{{schema.Name}}">
+                        <h4 class="schema-title">{{schema.Name}}</h4>
+                    </div>
+                    <div class="panel panel-collapse collapse" ng-repeat="tabela in schema.Tabelas" id="collapse_s_{{schema.Name}}">
+                        <div class="panel-heading info-db-header" data-toggle="collapse" data-parent="#accordion-info-bd" href="#collapse_t_{{$index}}">
                             <h4 class="panel-title tabela">
                                 {{tabela.Nome}}
                             </h4>
                         </div>
-                        <div id="collapse_{{$index}}" class="panel-collapse collapse">
+                        <div id="collapse_t_{{$index}}" class="panel-collapse collapse">
                             <div class="panel-body panel-info-db">
                                 <ul class="dropdown-menu app-dropdown-list">
                                     <li ng-repeat="coluna in tabela.Colunas" class="coluna">{{coluna.Nome}} <span class="info-column">({{coluna.Type}}({{coluna.Size}}) {{coluna.DescNullable}})</span></li>
